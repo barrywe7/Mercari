@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.barryirvine.mercari.viewmodel.ItemViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:onClick="@{()->viewModel.onClick()}"
+            android:orientation="vertical">
+
+            <com.barryirvine.mercari.ui.view.SquareLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:imageUrl="@{viewModel.photo}"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.soldOutVisibility}"
+                    android:src="@drawable/badge_soldout"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:padding="@dimen/key_line_half"
+                    android:text="@{viewModel.name}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="?android:textColorPrimaryInverse"/>
+
+            </com.barryirvine.mercari.ui.view.SquareLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/key_line_half">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:onClick="@{()->viewModel.onLikeClick()}">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:tint="@color/gallery"
+                        app:srcCompat="@drawable/ic_favorite_border_black_24dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:text="@{viewModel.numLikesAsString}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        tools:text="10"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:orientation="horizontal"
+                    android:onClick="@{()->viewModel.onCommentClick()}">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:layout_marginRight="@dimen/small_margin"
+                        android:tint="@color/gallery"
+                        app:srcCompat="@drawable/ic_chat_bubble_outline_black_24dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.numCommentsAsString}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        tools:text="10"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.priceAsString}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    tools:text="$10"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

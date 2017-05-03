@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="photo_image_size">400dp</dimen>
+    <dimen name="key_line">16dp</dimen>
+    <dimen name="key_line_half">8dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+</resources>

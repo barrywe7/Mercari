@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mercari</string>
+    <string name="men">Men</string>
+    <string name="women">Women</string>
+    <string name="all">All</string>
+
+</resources>
